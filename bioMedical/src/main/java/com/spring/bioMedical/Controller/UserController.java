@@ -2,6 +2,8 @@ package com.spring.bioMedical.Controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +20,11 @@ import com.spring.bioMedical.entity.Appointment;
 import com.spring.bioMedical.service.AdminServiceImplementation;
 import com.spring.bioMedical.service.AppointmentServiceImplementation;
 
+import com.spring.bioMedical.entity.Medicine;
+import com.spring.bioMedical.service.MedicineServiceImplementation;
+
+import com.spring.bioMedical.entity.Order;
+import com.spring.bioMedical.service.OrderServiceImplementation;
 /**
  * 
  * @author Soumyadip Chowdhury
@@ -31,12 +38,17 @@ public class UserController {
 	private AppointmentServiceImplementation appointmentServiceImplementation;
 
 	private AdminServiceImplementation adminServiceImplementation;
+	private MedicineServiceImplementation medicineServiceImplementation;
+	private OrderServiceImplementation orderServiceImplementation;
+
 	
 	@Autowired
-	public UserController(AppointmentServiceImplementation obj1,AdminServiceImplementation obj ) {
+	public UserController(AppointmentServiceImplementation obj1,AdminServiceImplementation obj,
+	MedicineServiceImplementation med, OrderServiceImplementation ord ) {
 		appointmentServiceImplementation= obj1;
 		adminServiceImplementation=obj;
-		 
+		medicineServiceImplementation = med;
+		orderServiceImplementation = ord;
 	}
 	
 	@GetMapping("/index")
@@ -78,6 +90,9 @@ public class UserController {
 		 System.out.println(obj);
 		 
 		 model.addAttribute("app",obj);
+
+		 List<Medicine> medlist=medicineServiceImplementation.findAll();
+		 model.addAttribute("meds", medlist);
 		
 		return "user/index";
 	}
@@ -90,6 +105,29 @@ public class UserController {
 	
 		// use a redirect to prevent duplicate submissions
 		return "redirect:/user/index";
+	}
+
+	@PostMapping("/order")
+	public String saveOrder(@ModelAttribute("app") Order obj) {
+		
+		// appointmentServiceImplementation.save(obj);
+		String username="";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+		   username = ((UserDetails)principal).getUsername();
+		  String Pass = ((UserDetails)principal).getPassword();
+		  
+		  
+		} else {
+		 username = principal.toString();
+		}
+		
+		Admin admin = adminServiceImplementation.findByEmail(username);
+		obj.setcreated_by(admin.getId());
+		System.out.println(obj);
+		orderServiceImplementation.save(obj);
+		// use a redirect to prevent duplicate submissions
+		return "redirect:/user/departments#success";
 	}
 
 	
@@ -349,6 +387,9 @@ public class UserController {
 		 System.out.println(obj);
 		 
 		 model.addAttribute("app",obj);
+
+		 List<Medicine> medlist=medicineServiceImplementation.findAll();
+		 model.addAttribute("meds", medlist);
 		
 		return "user/departments";
 	}

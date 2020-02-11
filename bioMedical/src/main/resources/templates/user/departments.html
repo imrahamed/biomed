@@ -25,7 +25,12 @@
     
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+	if(window.location.hash) {
+		window.alert('Order Successfully Placed')
+	} 
+	</script>
   </head>
   <body>
     
@@ -40,7 +45,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item "><a th:href="@{/user/index}" class="nav-link">Home</a></li>
           <li class="nav-item"><a th:href="@{/user/about}"  class="nav-link">About</a></li>
-          <li class="nav-item active"><a th:href="@{/user/departments}"  class="nav-link">Departments</a></li>
+          <li class="nav-item active"><a th:href="@{/user/departments}"  class="nav-link">Medicines</a></li>
           <li class="nav-item"><a th:href="@{/user/doctor}"  class="nav-link">Doctors</a></li>
           <li class="nav-item"><a th:href="@{/user/blog}"  class="nav-link">Blog</a></li>
           <li class="nav-item"><a th:href="@{/user/contact}"  class="nav-link">Contact</a></li>
@@ -63,8 +68,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-8 ftco-animate text-center">
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Departments</span></p>
-            <h1 class="mb-3 bread">Departments</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Medicines</span></p>
+            <h1 class="mb-3 bread">Medicines</h1>
           </div>
         </div>
       </div>
@@ -73,67 +78,24 @@
     <section class="ftco-section">
     	<div class="container">
     		<div class="row d-flex">
-    			<div class="col-lg-6 d-flex ftco-animate">
+				
+    			<div th:each="medici : ${meds}" class="col-lg-6 d-flex ftco-animate">
     				<div class="dept d-md-flex">
-    					<a href="department-single.html" class="img" style="background-image: url(../images/dept-1.jpg);"></a>
+    					<a href="#" class="img" style="background-image: url(https://sunrisehouse.com/wp-content/uploads/2017/08/prescription-pills-400x267.jpg);"></a>
     					<div class="text p-4">
-    						<h3><a href="department-single.html">Dental Department</a></h3>
-    						<p><span class="loc">203 Fake St. California, USA</span></p>
-    						<p><span class="doc">22 Doctors</span></p>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-    						<ul>
-    							<li><span class="ion-ios-checkmark"></span>Emergency</li>
-    							<li><span class="ion-ios-checkmark"></span>Laboratory</li>
-    							<li><span class="ion-ios-checkmark"></span>Dental</li>
-    						</ul>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6 d-flex ftco-animate">
-    				<div class="dept d-md-flex">
-    					<a href="department-single.html" class="img" style="background-image: url(../images/dept-2.jpg);"></a>
-    					<div class="text p-4">
-    						<h3><a href="department-single.html">Surgical Department</a></h3>
-    						<p><span class="loc">203 Fake St. California, USA</span></p>
-    						<p><span class="doc">22 Doctors</span></p>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-    						<ul>
-    							<li><span class="ion-ios-checkmark"></span>Emergency</li>
-    							<li><span class="ion-ios-checkmark"></span>Laboratory</li>
-    							<li><span class="ion-ios-checkmark"></span>Dental</li>
-    						</ul>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6 d-flex ftco-animate">
-    				<div class="dept d-md-flex">
-    					<a href="department-single.html" class="img" style="background-image: url(../images/dept-3.jpg);"></a>
-    					<div class="text p-4">
-    						<h3><a href="department-single.html">Neurological Department</a></h3>
-    						<p><span class="loc">203 Fake St. California, USA</span></p>
-    						<p><span class="doc">22 Doctors</span></p>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-    						<ul>
-    							<li><span class="ion-ios-checkmark"></span>Emergency</li>
-    							<li><span class="ion-ios-checkmark"></span>Laboratory</li>
-    							<li><span class="ion-ios-checkmark"></span>Dental</li>
-    						</ul>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6 d-flex ftco-animate">
-    				<div class="dept d-md-flex">
-    					<a href="department-single.html" class="img" style="background-image: url(../images/dept-4.jpg);"></a>
-    					<div class="text p-4">
-    						<h3><a href="department-single.html">Ophthalmological Department</a></h3>
-    						<p><span class="loc">203 Fake St. California, USA</span></p>
-    						<p><span class="doc">22 Doctors</span></p>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-    						<ul>
-    							<li><span class="ion-ios-checkmark"></span>Emergency</li>
-    							<li><span class="ion-ios-checkmark"></span>Laboratory</li>
-    							<li><span class="ion-ios-checkmark"></span>Dental</li>
-    						</ul>
+    						<h3 th:text="${medici.medicine_name}"></h3>
+							<p><span th:text="${medici.actual_price} + ' ₹'" class="doc"></span></p>
+							<p><span th:text="${medici.discount_price} + ' ₹'" class="doc1"></span></p>
+    						<p th:text="${medici.description}"></p>
+    						<div class="row">
+								<form th:object="${orderpayload}" th:action="@{/user/order}" method="post">
+									<input type="hidden" name="medicine_id" th:value=${medici.id}  >
+									<div class="col-md-4">Quantity</div>
+									<input class="col-md-4" type="number" value="1" name="quantity" id="">
+									<button type="submit" class="btn btn-primary col-md-4">Order</button>
+								</form>
+								
+							</div>
     					</div>
     				</div>
     			</div>
@@ -489,7 +451,7 @@
               <ul class="list-unstyled">
                 <li><a href="#" class="py-2 d-block">Home</a></li>
                 <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Departments</a></li>
+                <li><a href="#" class="py-2 d-block">Medicines</a></li>
                 <li><a href="#" class="py-2 d-block">Doctors</a></li>
                 <li><a href="#" class="py-2 d-block">Blog</a></li>
                 <li><a href="#" class="py-2 d-block">Contact</a></li>

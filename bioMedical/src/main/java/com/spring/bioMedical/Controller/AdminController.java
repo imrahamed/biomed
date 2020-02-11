@@ -228,7 +228,7 @@ public class AdminController {
 		adminServiceImplementation.save(admin);
 		
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/admin/userdetails";
+		return "redirect:/admin/doctor-details";
 	}
 	
 	
@@ -292,7 +292,7 @@ public class AdminController {
 		adminServiceImplementation.save(admin);
 		
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/admin/userdetails";
+		return "redirect:/admin/admin-details";
 	}
 	
 	@GetMapping("/edit-my-profile")

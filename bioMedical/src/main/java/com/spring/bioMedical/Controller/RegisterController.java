@@ -75,6 +75,8 @@ public class RegisterController {
 		    
 			user.setEnabled(false);
 			user.setRole("ROLE_USER");
+			user.setPassword("default");
+			user.setEnabled(true);
 		      
 			
 		    // Generate random 36-character string token for confirmation link
