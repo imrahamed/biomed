@@ -89,7 +89,7 @@
     						<p th:text="${medici.description}"></p>
     						<div class="row">
 								<form th:object="${orderpayload}" th:action="@{/user/order}" method="post">
-									<input type="hidden" name="medicine_id" th:value=${medici.id}  >
+									<input type="hidden" name="medicine_id" th:value=${medici.medicine_name}  >
 									<div class="col-md-4">Quantity</div>
 									<input class="col-md-4" type="number" value="1" name="quantity" id="">
 									<button type="submit" class="btn btn-primary col-md-4">Order</button>

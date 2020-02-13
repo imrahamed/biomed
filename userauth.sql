@@ -64,7 +64,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (61),(61);
+INSERT INTO `hibernate_sequence` VALUES (62),(62);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +85,7 @@ CREATE TABLE `medicine` (
   `quantity` int(6) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,11 +107,11 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `medicine_id` int(11) DEFAULT NULL,
+  `medicine_id` varchar(255) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (58,34,1,27),(59,34,1,27),(60,34,1,27);
+INSERT INTO `orders` VALUES (61,'Sample',1,'imrahamed1@gmail.com');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +153,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'36983cce-975b-4a92-bf73-a4f41978e01c','soumyadip.note@gmail.com',_binary '','Soumyadip','MALE','Chowdhury','soumyadip','ROLE_ADMIN','Wed Feb 12 02:41:12 IST 2020'),(2,'ByAdmin-Panel','soumyadip@gmail.com',_binary '','Soumyadip','Male','Chowdhury','default','ROLE_DOCTOR','Fri Jun 14 17:11:47 IST 2019'),(4,'ByAdmin-Panel','a.note@gmail.com',_binary '','Soumyadip','MALE','Chowdhury','default','ROLE_DOCTOR','Wed Jul 03 14:06:52 IST 2019'),(6,'ByAdmin-Panel','soumyadip.ote@gmail.com',_binary '','Soumyadip','MALE','Chowdhury','default','ROLE_DOCTOR','Tue Aug 06 17:15:20 IST 2019'),(7,'ByAdmin-Panel','soumydip.cmp@gmail.com',_binary '','Mr. Soumyadip','MALE','Chowdhury','default','ROLE_ADMIN','Sat Jun 08 18:25:03 IST 2019'),(12,'a6866ee4-f568-47a9-9a23-2297ec37c293','testUser@gmail.com',_binary '','Soumyadip','Male','Chowdhury','soumyadip','ROLE_USER','Tue Aug 06 17:13:58 IST 2019'),(20,'ByAdmin-Panel','s@teamcg.com',_binary '','Sanket','Male','Sarkar','default','ROLE_DOCTOR','Fri Jun 14 17:14:51 IST 2019'),(22,'ByAdmin-Panel','aashifathahasin@gmail.com',_binary '','aashifa','F','thahasin','default','ROLE_DOCTOR','Wed Feb 12 02:43:31 IST 2020'),(24,'ByAdmin-Panel','aashifathahasin1@gmail.com',_binary '','aashifa','F','thahasin','default','ROLE_DOCTOR','Tue Feb 11 17:53:31 IST 2020'),(25,'ce13a68d-9dc3-4ba9-844f-ef69f3b0bfa0','sampler@gmail.com',_binary '\0','imran','Male','ahamed',NULL,'ROLE_USER',NULL),(26,'4eb27083-98bc-4138-8ad2-d8d12674e1ad','sampler1@gmail.com',_binary '\0','imran','Male','ahamed','default','ROLE_USER',NULL),(27,'c64094e5-4cfa-4af5-b557-57d397cf7879','imrahamed1@gmail.com',_binary '','Imran','Male','Ahmed','default','ROLE_USER','Wed Feb 12 02:12:07 IST 2020'),(29,'ByAdmin-Panel','ramkumar@examly.in',_binary '','ram','F','kumar','default','ROLE_DOCTOR',NULL),(30,'ByAdmin-Panel','sellerram@examly.in',_binary '','Seller','M','ram','default','ROLE_DOCTOR',NULL),(31,'ByAdmin-Panel','imran1@examly.in',_binary '','imran','M','ahamed','default','ROLE_DOCTOR',NULL),(32,'ByAdmin-Panel','imran12@examly.in',_binary '','imran','M','ahamed','default','ROLE_DOCTOR',NULL);
+INSERT INTO `user` VALUES (1,'36983cce-975b-4a92-bf73-a4f41978e01c','soumyadip.note@gmail.com',_binary '','Soumyadip','MALE','Chowdhury','soumyadip','ROLE_ADMIN','Thu Feb 13 10:52:47 IST 2020'),(2,'ByAdmin-Panel','soumyadip@gmail.com',_binary '','Soumyadip','Male','Chowdhury','default','ROLE_DOCTOR','Fri Jun 14 17:11:47 IST 2019'),(4,'ByAdmin-Panel','a.note@gmail.com',_binary '','Soumyadip','MALE','Chowdhury','default','ROLE_DOCTOR','Wed Jul 03 14:06:52 IST 2019'),(6,'ByAdmin-Panel','soumyadip.ote@gmail.com',_binary '','Soumyadip','MALE','Chowdhury','default','ROLE_DOCTOR','Tue Aug 06 17:15:20 IST 2019'),(7,'ByAdmin-Panel','soumydip.cmp@gmail.com',_binary '','Mr. Soumyadip','MALE','Chowdhury','default','ROLE_ADMIN','Sat Jun 08 18:25:03 IST 2019'),(12,'a6866ee4-f568-47a9-9a23-2297ec37c293','testUser@gmail.com',_binary '','Soumyadip','Male','Chowdhury','soumyadip','ROLE_USER','Tue Aug 06 17:13:58 IST 2019'),(20,'ByAdmin-Panel','s@teamcg.com',_binary '','Sanket','Male','Sarkar','default','ROLE_DOCTOR','Fri Jun 14 17:14:51 IST 2019'),(22,'ByAdmin-Panel','aashifathahasin@gmail.com',_binary '','aashifa','F','thahasin','default','ROLE_DOCTOR','Wed Feb 12 02:43:31 IST 2020'),(24,'ByAdmin-Panel','aashifathahasin1@gmail.com',_binary '','aashifa','F','thahasin','default','ROLE_DOCTOR','Thu Feb 13 10:53:28 IST 2020'),(25,'ce13a68d-9dc3-4ba9-844f-ef69f3b0bfa0','sampler@gmail.com',_binary '\0','imran','Male','ahamed',NULL,'ROLE_USER',NULL),(26,'4eb27083-98bc-4138-8ad2-d8d12674e1ad','sampler1@gmail.com',_binary '\0','imran','Male','ahamed','default','ROLE_USER',NULL),(27,'c64094e5-4cfa-4af5-b557-57d397cf7879','imrahamed1@gmail.com',_binary '','Imran','Male','Ahmed','default','ROLE_USER','Thu Feb 13 10:52:15 IST 2020'),(29,'ByAdmin-Panel','ramkumar@examly.in',_binary '','ram','F','kumar','default','ROLE_DOCTOR',NULL),(30,'ByAdmin-Panel','sellerram@examly.in',_binary '','Seller','M','ram','default','ROLE_DOCTOR',NULL),(31,'ByAdmin-Panel','imran1@examly.in',_binary '','imran','M','ahamed','default','ROLE_DOCTOR',NULL),(32,'ByAdmin-Panel','imran12@examly.in',_binary '','imran','M','ahamed','default','ROLE_DOCTOR',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -166,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-12  2:44:25
+-- Dump completed on 2020-02-13 10:54:13

@@ -27,13 +27,13 @@ public class Order {
 	public int id;
 	
 	@Column(name = "medicine_id")
-    public int medicine_id;
+    public String medicine_id;
     
     @Column(name = "quantity")
     public int quantity;
     
     @Column(name = "created_by")
-	public int created_by;
+	public String created_by;
 	
 	
 	
@@ -47,11 +47,11 @@ public class Order {
 		this.id = id;
     }
     
-    public int getmedicine_id() {
+    public String getmedicine_id() {
 		return medicine_id;
 	}
 
-	public void setmedicine_id(int medicine_id) {
+	public void setmedicine_id(String medicine_id) {
 		this.medicine_id = medicine_id;
     }
     
@@ -64,11 +64,11 @@ public class Order {
 		this.quantity = quantity;
     }
     
-    public int getcreated_by() {
+    public String getcreated_by() {
 		return created_by;
 	}
 
-	public void setcreated_by(int created_by) {
+	public void setcreated_by(String created_by) {
 		this.created_by = created_by;
 	}
 

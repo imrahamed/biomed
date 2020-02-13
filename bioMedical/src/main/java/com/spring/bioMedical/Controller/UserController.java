@@ -123,7 +123,7 @@ public class UserController {
 		}
 		
 		Admin admin = adminServiceImplementation.findByEmail(username);
-		obj.setcreated_by(admin.getId());
+		obj.setcreated_by(admin.getEmail());
 		System.out.println(obj);
 		orderServiceImplementation.save(obj);
 		// use a redirect to prevent duplicate submissions
